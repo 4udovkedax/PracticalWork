@@ -1,7 +1,6 @@
 package ru.practicalwork.task1;
 
 import lombok.Getter;
-
 import java.util.HashMap;
 
 public class Account implements Cloneable{
@@ -27,7 +26,6 @@ public class Account implements Cloneable{
     public HashMap<Currency, Integer> getSumCurrencyArr() {
         return (HashMap<Currency, Integer>) this.sumCurrencyArr.clone();
     }
-
 
     public void addSumCurrency(Currency currency, int sum) {
         if (sum < 0)

@@ -9,7 +9,6 @@ public class SaveAccVersion {
     public SaveAccountBuild getSaveAccountBuild(String nameSave) {
         return this.saveAccountBuild.get(nameSave);
     }
-
     public void setSaveAccountBuild(String nameSave, SaveAccountBuild saveAccountBuild) {
         if (this.saveAccountBuild.containsKey(nameSave))
             throw new RuntimeException("Указанное имя сейфа занято");
