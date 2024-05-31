@@ -3,13 +3,12 @@ package ru.practicalwork.task1;
 import lombok.Getter;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Account implements Cloneable{
     @Getter
     private String nameOwner;
-    @Getter
     private HashMap<Currency, Integer> sumCurrencyArr = new HashMap<>();
+    private static final SaveAccVersion saveAccVersion = new SaveAccVersion();
 
     public Account(String nameOwner) {
         this.nameOwner = checkName(nameOwner);
@@ -25,6 +24,10 @@ public class Account implements Cloneable{
         }
         return nameOwner;
     }
+    public HashMap<Currency, Integer> getSumCurrencyArr() {
+        return (HashMap<Currency, Integer>) this.sumCurrencyArr.clone();
+    }
+
 
     public void addSumCurrency(Currency currency, int sum) {
         if (sum < 0)
@@ -32,8 +35,36 @@ public class Account implements Cloneable{
         this.sumCurrencyArr.put(currency, sum);
     }
 
+    public void save(String nameSave) {
+        this.saveAccVersion.setSaveAccountBuild(nameSave, new SaveAccount(this));
+    }
+    public void load(String nameSave) {
+        SaveAccountBuild accountBuild = saveAccVersion.getSaveAccountBuild(nameSave);
+        this.nameOwner = accountBuild.getNameOwner();
+        this.sumCurrencyArr = accountBuild.getSumCurrencyArr();
+    }
+
     @Override
     public String toString() {
         return "Владелец счета: " + nameOwner + "; Колличество валюты: " + sumCurrencyArr + ";";
+    }
+
+    private static class SaveAccount implements SaveAccountBuild{
+        private String nameOwner;
+        private HashMap<Currency, Integer> sumCurrencyArr = new HashMap<>();
+
+        public SaveAccount(Account account) {
+            this.nameOwner = account.getNameOwner();
+            this.sumCurrencyArr = account.getSumCurrencyArr();
+        }
+
+        public String getNameOwner() {
+            return this.nameOwner;
+        }
+
+        public HashMap<Currency, Integer> getSumCurrencyArr() {
+            return this.sumCurrencyArr;
+        }
+
     }
 }
