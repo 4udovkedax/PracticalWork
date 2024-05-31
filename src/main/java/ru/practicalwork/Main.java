@@ -1,8 +1,6 @@
 package ru.practicalwork;
 
-import ru.practicalwork.task1.Account;
-import ru.practicalwork.task1.Currency;
-import ru.practicalwork.task1.MethodAccount;
+import ru.practicalwork.task1.*;
 
 public class Main {
     public static void main(String[] args){

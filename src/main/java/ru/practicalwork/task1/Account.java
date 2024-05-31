@@ -3,7 +3,7 @@ package ru.practicalwork.task1;
 import lombok.Getter;
 import java.util.HashMap;
 
-public class Account implements Cloneable{
+public class Account{
     @Getter
     private String nameOwner;
     private HashMap<Currency, Integer> sumCurrencyArr = new HashMap<>();
