@@ -2,25 +2,25 @@ package ru.practicalwork;
 
 import ru.practicalwork.task1.Account;
 import ru.practicalwork.task1.Currency;
-
-import java.util.Map;
+import ru.practicalwork.task1.MethodAccount;
 
 public class Main {
-    public static void main(String[] args) {
-        Account acc = new Account("aasd");
-        System.out.println(acc);
-        acc.setNameOwner("Vika");
-        System.out.println(acc.getNameOwner());
-        acc.addSumCurrency(Currency.RUB, 12);
-        acc.addSumCurrency(Currency.RUB, 123);
-        acc.addSumCurrency(Currency.BYN, 22);
-        Map<Currency, Integer> arr = acc.getSumCurrencyArr();
-        arr.put(Currency.USD, 16);
-        System.out.println(acc.getSumCurrencyArr());
-        System.out.println(arr);
+    public static void main(String[] args){
+        Account acc = new Account("Vika");
+        MethodAccount methodAccount = new MethodAccount(acc);
+        methodAccount.run(a->a.setNameOwner("Macha"));
+        methodAccount.run(a->a.setNameOwner("adadsasdads"));
 
-        acc.setNameOwner("null");
-        System.out.println(acc);
+        methodAccount.run(a->a.addSumCurrency(Currency.RUB,12));
+        methodAccount.run(a->a.addSumCurrency(Currency.USD, 444));
+        methodAccount.run(a->a.addSumCurrency(Currency.RUB, 333));
 
+        acc = methodAccount.undo();
+        acc = methodAccount.undo();
+        acc = methodAccount.undo();
+        acc = methodAccount.undo();
+        acc = methodAccount.undo();
+//        acc = methodAccount.undo();
+        System.out.println("test: " + acc);
     }
 }

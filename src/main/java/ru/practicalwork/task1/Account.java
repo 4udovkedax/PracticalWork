@@ -1,12 +1,12 @@
 package ru.practicalwork.task1;
 
 import lombok.Getter;
-import lombok.Setter;
+import lombok.SneakyThrows;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Account {
+public class Account implements Cloneable{
     @Getter
     private String nameOwner;
     private HashMap<Currency, Integer> sumCurrencyArr = new HashMap<>();
@@ -32,7 +32,7 @@ public class Account {
 
     public void addSumCurrency(Currency currency, int sum) {
         if (sum < 0)
-            throw new IllegalArgumentException("Количество валют не может быть меньше нуля");
+            throw new IllegalArgumentException("Сумма валюты не может быть меньше нуля");
         this.sumCurrencyArr.put(currency, sum);
     }
 
