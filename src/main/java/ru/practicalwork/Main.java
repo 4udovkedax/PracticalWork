@@ -15,12 +15,15 @@ public class Main {
         methodAccount.run(a->a.addSumCurrency(Currency.USD, 444));
         methodAccount.run(a->a.addSumCurrency(Currency.RUB, 333));
 
+        System.out.println(acc.getSumCurrencyArr());
+
         acc = methodAccount.undo();
         acc = methodAccount.undo();
         acc = methodAccount.undo();
         acc = methodAccount.undo();
         acc = methodAccount.undo();
 //        acc = methodAccount.undo();
+
         System.out.println("test: " + acc);
     }
 }

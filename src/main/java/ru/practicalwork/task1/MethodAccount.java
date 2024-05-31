@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MethodAccount {
     private List<RunMethodAccount> arrMethodAccount = new ArrayList<>();
-    private String nameOwnerOld;
+    private final String nameOwnerOld;
     private Account account;
 
     public MethodAccount(Account account) {

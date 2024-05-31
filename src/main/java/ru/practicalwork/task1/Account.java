@@ -1,7 +1,6 @@
 package ru.practicalwork.task1;
 
 import lombok.Getter;
-import lombok.SneakyThrows;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +8,7 @@ import java.util.Map;
 public class Account implements Cloneable{
     @Getter
     private String nameOwner;
+    @Getter
     private HashMap<Currency, Integer> sumCurrencyArr = new HashMap<>();
 
     public Account(String nameOwner) {
@@ -24,10 +24,6 @@ public class Account implements Cloneable{
             throw new IllegalArgumentException("Имя владельца счета не может быть пустым");
         }
         return nameOwner;
-    }
-
-    public Map<Currency, Integer> getSumCurrencyArr() {
-        return (HashMap<Currency, Integer>) this.sumCurrencyArr.clone();
     }
 
     public void addSumCurrency(Currency currency, int sum) {
