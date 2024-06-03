@@ -29,5 +29,7 @@ public class Main {
         System.out.println(acc);
         acc.load("test1");
         System.out.println(acc);
+        acc.load("test2");
+        System.out.println(acc);
     }
 }
