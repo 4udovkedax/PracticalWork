@@ -62,7 +62,7 @@ public class Account{
         }
 
         public HashMap<Currency, Integer> getSumCurrencyArr() {
-            return this.sumCurrencyArr;
+            return (HashMap<Currency, Integer>) this.sumCurrencyArr.clone(); //new
         }
 
     }
