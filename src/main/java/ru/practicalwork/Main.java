@@ -43,18 +43,37 @@ public class Main {
         System.out.println("acc.getSumCurrencyArr()=" + acc.getSumCurrencyArr());
 
         acc.save("test");
-        acc.addSumCurrency(Currency.EUR, 1);
-        acc.addSumCurrency(Currency.RUB, 2);
-        acc.addSumCurrency(Currency.USD, 3);
+        acc.addSumCurrency(Currency.EUR, 4);
+        acc.addSumCurrency(Currency.RUB, 5);
+        acc.addSumCurrency(Currency.USD, 6);
 
         Account acc2 = new Account("qwe");
         acc2.load("test");
-        acc2.addSumCurrency(Currency.EUR, 4);
-        acc2.addSumCurrency(Currency.RUB, 5);
-        acc2.addSumCurrency(Currency.USD, 6);
+        acc2.setNameOwner("Masha");
+
+        acc2.addSumCurrency(Currency.EUR, 7);
+        acc2.addSumCurrency(Currency.RUB, 8);
+        acc2.addSumCurrency(Currency.USD, 9);
 
         acc.load("test");
+        acc.setNameOwner("Misha");
 
         System.out.println(acc + " " + acc2);
+
+        HashMap <Integer, Integer> test1 = new HashMap<>();
+        HashMap <Integer, Integer> test2 = new HashMap<>();
+        test1.put(1,1);
+        test1.put(2,2);
+        test1.put(3,3);
+
+
+        test2 = (HashMap<Integer, Integer>) test1.clone();
+        test2.put(1,4);
+        test2.put(2,5);
+        test2.put(3,6);
+        test2.put(4,7);
+        test1.put(5,8);
+
+        System.out.println(test1 + " " + test2);
     }
 }

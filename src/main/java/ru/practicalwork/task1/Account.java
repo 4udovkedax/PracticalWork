@@ -25,7 +25,7 @@ public class Account{
         return nameOwner;
     }
     public HashMap<Currency, Integer> getSumCurrencyArr() {
-        return (HashMap<Currency, Integer>) this.sumCurrencyArr.clone();
+        return new HashMap<Currency, Integer> (this.sumCurrencyArr);
     }
 
     public void addSumCurrency(Currency currency, int sum) {
@@ -62,7 +62,7 @@ public class Account{
         }
 
         public HashMap<Currency, Integer> getSumCurrencyArr() {
-            return (HashMap<Currency, Integer>) this.sumCurrencyArr.clone(); //new
+            return new HashMap<Currency, Integer> (this.sumCurrencyArr);
         }
 
     }
