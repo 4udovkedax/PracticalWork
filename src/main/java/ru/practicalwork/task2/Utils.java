@@ -7,7 +7,7 @@ public class Utils {
         return (T) Proxy.newProxyInstance(
                 obj.getClass().getClassLoader(),
                 obj.getClass().getInterfaces(),
-                new MakeCache(obj)
+                new MakeCache<T>(obj)
         );
     }
 
