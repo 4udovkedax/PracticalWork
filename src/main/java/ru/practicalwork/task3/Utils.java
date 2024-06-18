@@ -1,4 +1,4 @@
-package ru.practicalwork.task2;
+package ru.practicalwork.task3;
 
 import java.lang.reflect.Proxy;
 
