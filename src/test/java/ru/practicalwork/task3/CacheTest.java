@@ -7,6 +7,8 @@ import ru.practicalwork.task3.fraction.Fraction;
 import ru.practicalwork.task3.fraction.FractionCopy;
 import ru.practicalwork.task3.fraction.Fractionable;
 
+import java.util.Set;
+
 public class CacheTest {
     @Test
     @DisplayName("Проверка вызова очистки кэша")
@@ -49,7 +51,7 @@ public class CacheTest {
         Assertions.assertEquals(frCopy.count1, 4);
     }
 
-     @Test
+    @Test
     @DisplayName("Проверка полученных значений")
     public void testCacheValues() {
         FractionCopy frCopy = new FractionCopy(10,2);
@@ -71,5 +73,30 @@ public class CacheTest {
 
         Assertions.assertEquals(num.doubleValue(5, 5), 5*5);
         Assertions.assertEquals(num.doubleValue(), (double) 5/2);
+    }
+
+    @Test
+    @DisplayName("Проверка выполнения по потокам")
+    public  void testCacheThread() throws InterruptedException {
+        Fraction fr = new Fraction(10,2);
+        FractionCopy frCopy = new FractionCopy(10,2);
+        Fractionable num = Utils.cache(fr);
+        Fractionable num2 = Utils.cache(frCopy);
+
+        Set<Thread> threads = Thread.getAllStackTraces().keySet();
+        Assertions.assertEquals(threads.stream().filter(x->!x.isDaemon()).count(), 1);
+
+        num.setNum(2);
+        num2.setNum(3);
+        Thread.sleep(500);
+
+        num2.doubleValue();
+        Thread.sleep(600);
+        threads = Thread.getAllStackTraces().keySet();
+        Assertions.assertEquals(threads.stream().filter(x->!x.isDaemon()).count(), 2);
+
+        Thread.sleep(600);
+        threads = Thread.getAllStackTraces().keySet();
+        Assertions.assertEquals(threads.stream().filter(x->!x.isDaemon()).count(), 1);
     }
 }

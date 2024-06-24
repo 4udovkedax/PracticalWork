@@ -32,6 +32,7 @@ public class CacheValues <T>{
 
     private void startScheduleService(long offsetTime) {
         if (scheduleOn.get() == 0) {
+            long startTime = offsetTime;
             ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
             scheduleOn.set(1);
 
@@ -42,7 +43,7 @@ public class CacheValues <T>{
                     scheduleOn.set(0);
                 }
                 //добавить запуск интевалов по времени
-            }, 1000, 1000, TimeUnit.MILLISECONDS);
+            }, startTime, startTime, TimeUnit.MILLISECONDS);
         }
     }
 
