@@ -1,7 +1,5 @@
 package ru.practicalwork.task4.repo;
 
-import org.springframework.stereotype.Component;
-
 import java.sql.*;
 
 public class UserDTO {

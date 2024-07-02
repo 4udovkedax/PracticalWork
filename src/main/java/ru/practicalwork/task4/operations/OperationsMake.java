@@ -1,6 +1,5 @@
 package ru.practicalwork.task4.operations;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.practicalwork.task4.model.Model;
 
@@ -11,11 +10,8 @@ import java.util.function.Supplier;
 
 @Component
 public class OperationsMake {
-    //@Autowired
     private Supplier<Model> datareader;
-    //@Autowired
     private Consumer<Model> writer;
-    //@Autowired
     private List<Operation> operations = new ArrayList<>();
 
 

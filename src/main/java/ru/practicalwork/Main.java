@@ -7,10 +7,15 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import ru.practicalwork.task4.model.Model;
+import ru.practicalwork.task4.model.ReadFiles;
+import ru.practicalwork.task4.operations.OperationCheckDate;
+import ru.practicalwork.task4.operations.OperationCheckFIO;
 import ru.practicalwork.task4.operations.OperationsMake;
 import ru.practicalwork.task4.repo.User;
 import ru.practicalwork.task4.repo.UserRepo;
 
+import java.io.File;
 import java.sql.*;
 
 @SpringBootApplication(scanBasePackages = "ru.practicalwork.task4")
@@ -19,6 +24,7 @@ public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         ApplicationContext context = new AnnotationConfigApplicationContext("ru.practicalwork.task4");
         context.getBean("operationsMake", OperationsMake.class).make();
+
 
 //        Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "new_pasword");
 //        Statement stat = con.createStatement();

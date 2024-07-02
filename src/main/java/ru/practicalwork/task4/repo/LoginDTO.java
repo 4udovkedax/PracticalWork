@@ -7,7 +7,7 @@ public class LoginDTO {
     public static void save(Login login, int id) throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "new_pasword");
         Timestamp timestamp = new Timestamp(login.getDate().getTime());
-        System.out.println(login.getDate());
+
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
