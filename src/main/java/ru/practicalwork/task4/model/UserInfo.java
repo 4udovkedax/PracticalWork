@@ -2,7 +2,6 @@ package ru.practicalwork.task4.model;
 
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.Date;
 
 @Setter @Getter

@@ -1,32 +1,28 @@
 package ru.practicalwork.task4.operations;
 
 import org.springframework.stereotype.Component;
-import ru.practicalwork.task4.repo.User;
+import ru.practicalwork.task4.repo.*;
 import ru.practicalwork.task4.model.Model;
 import ru.practicalwork.task4.model.UserInfo;
-import ru.practicalwork.task4.repo.UserRepo;
 
+import java.sql.SQLException;
 import java.util.function.Consumer;
 
 @Component
 public class DataWriter implements Consumer<Model> {
-//    private final UserRepo userRepository;
-//
-//    public DataWriter(UserRepo userRepository) {
-//        this.userRepository = userRepository;
-//    }
-
     @Override
     public void accept(Model model) {
+        int i = 0;
         for (UserInfo userInfo : model.getListModel()) {
-            User user = new User(1L, userInfo.getLogin(), userInfo.getLastName() + " " + userInfo.getName() + " " + userInfo.getSurName());
-            //userRepository.save(user);
-//            User user = saveAndGetUser(fl.getLogin(), fl.getLastName(), fl.getFirstName(), fl.getSurName());
-//            addLogin(user, fl.getDateIn(), fl.getModule());
-//        }
-//
-//        for (User u: usersToUpdate) {
-//            uRepo.save(u);
+            User user = new User(null, userInfo.getLogin(), userInfo.getLastName() + " " + userInfo.getName() + " " + userInfo.getSurName());
+            Login login = new Login(null, userInfo.getDate(), userInfo.getApp());
+            i++;
+            try {
+                UserDTO.save(user, i);
+                LoginDTO.save(login, i);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }
