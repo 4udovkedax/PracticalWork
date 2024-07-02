@@ -1,15 +1,16 @@
 package ru.practicalwork.task4.operations;
 
 import org.springframework.stereotype.Component;
+import ru.practicalwork.task4.log.LogTransformation;
 import ru.practicalwork.task4.model.Model;
 import ru.practicalwork.task4.model.ReadFiles;
 
 import java.io.File;
-import java.util.List;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
 @Component
+@LogTransformation
 public class DataReader implements Supplier<Model> {
 
     @Override

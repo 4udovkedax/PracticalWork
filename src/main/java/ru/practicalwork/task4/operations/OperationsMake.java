@@ -11,11 +11,11 @@ import java.util.function.Supplier;
 
 @Component
 public class OperationsMake {
-    @Autowired
+    //@Autowired
     private Supplier<Model> datareader;
-    @Autowired
+    //@Autowired
     private Consumer<Model> writer;
-    @Autowired
+    //@Autowired
     private List<Operation> operations = new ArrayList<>();
 
 

@@ -26,7 +26,6 @@ public class ReadFiles {
                         throw new RuntimeException(e);
                     }
                     values.addAll(newStr);
-                    System.out.println(f.getName());
                 }
             }
             return values;

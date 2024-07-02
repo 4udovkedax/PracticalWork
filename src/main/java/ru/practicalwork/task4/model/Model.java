@@ -1,48 +1,44 @@
 package ru.practicalwork.task4.model;
 
-import ru.practicalwork.task4.operations.OperationsMake;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 public class Model {
-    private List<String> listModel = new ArrayList<>();
+    private List<UserInfo> listModel = new ArrayList<>();
+
+    public List<UserInfo> getListModel() {
+        return listModel;
+    }
 
     public void addModel(List<String> list) {
         if (!list.isEmpty()) {
             for (String str : list) {
-                this.listModel.add(str);
-                System.out.println(str);
+                this.listModel.add(addUserInfo(str));
             }
         }
     }
 
-    //    public List<FileData> getFileLines() {
-//        return new ArrayList<>(fileLines);
-//    }
-//
-//    public void setFileLines(List<FileData> fileLines) {
-//        this.fileLines = new ArrayList<>(fileLines);
-//    }
-//
-//    public void addLine(String fileName, String line) {
-//        if (line.isBlank()) {
-//            return;
-//        }
-//        String[] parts = line.split(" ");
-//        Timestamp ts = null;
-//        if (!parts[4].isBlank()) {
-//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
-//
-//            try {
-//                ts = new Timestamp(dateFormat.parse(parts[4]).getTime());
-//            } catch (ParseException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//
-//        fileLines.add(new FileData(fileName, parts[0], parts[1], parts[2], parts[3], ts, parts[5]));
-//    }
+    private UserInfo addUserInfo(String str) {
+        String[] userInfoArr = new String[6];
+        int i = 0;
+        Date date = null;
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 
+        for (String s : str.split(" ")) {
+            if (i != 4)
+                userInfoArr[i++] = s;
+            else {
+                i++;
+                try {
+                    date = format.parse(s);
+                } catch (ParseException e) {
+                    continue;
+                }
+            }
+        }
+        return new UserInfo(userInfoArr[0], userInfoArr[1], userInfoArr[2], userInfoArr[3], date, userInfoArr[5]);
+    }
 }
