@@ -15,7 +15,7 @@ import java.util.Date;
 @Aspect
 public class SaveLogTransformation {
 
-    @Around("execution(public * *(..))")
+    @Around("execution(* apply(..))")
     public Object aroundOperation(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Date date = new Date();
         String logText;

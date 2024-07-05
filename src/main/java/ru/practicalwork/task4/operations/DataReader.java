@@ -10,7 +10,6 @@ import java.util.Scanner;
 import java.util.function.Supplier;
 
 @Component
-@LogTransformation
 public class DataReader implements Supplier<Model> {
 
     @Override
@@ -19,6 +18,7 @@ public class DataReader implements Supplier<Model> {
         Scanner sc = new Scanner(System.in);
 
         String strURL = sc.next();
+//        String strURL = "E:\\java\\PracticalWork\\tasks\\src\\main\\resources\\task4\\files";
         File filePath = new File(strURL);
         model.addModel(new ReadFiles().readingFromDir(filePath));
 

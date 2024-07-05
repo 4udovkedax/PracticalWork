@@ -22,9 +22,12 @@ import java.sql.*;
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        ApplicationContext context = new AnnotationConfigApplicationContext("ru.practicalwork.task4");
-        context.getBean("operationsMake", OperationsMake.class).make();
+//        ApplicationContext context = new AnnotationConfigApplicationContext("ru.practicalwork.task4");
+//        context.getBean("operationsMake", OperationsMake.class).make();
 
+
+        ApplicationContext context = SpringApplication.run(Main.class);
+        context.getBean(OperationsMake.class).make();
 
 //        Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "new_pasword");
 //        Statement stat = con.createStatement();
